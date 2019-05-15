@@ -41,10 +41,10 @@
   cursor: pointer;
 }
 .menu {
-  display: none;
+  display: block;
   position: fixed;
   top: 75px;
-  left: 0;
+  left: -350px;
   width: 350px;
   height: 100vh;
   /* This give the height 100% of the screen or, '100% of View Height' */
@@ -54,6 +54,7 @@
   border-bottom: none;
   z-index: 2;
   /* This set the layer level of the element, it has precendence over initial level of 1*/
+  transition: left 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 .menu ul {
   padding: 0;
@@ -70,7 +71,7 @@
   background-color: #004D4033;
 }
 .menu--open {
-  display: block;
+  left: 0px;
 }
 .articles {
   margin-top: 95px;
@@ -82,9 +83,10 @@
   border-radius: 10px;
   background-color: white;
   position: relative;
-  height: 50px;
+  max-height: 50px;
   overflow: hidden;
   box-shadow: 2px 2px 2px lightgrey;
+  transition: max-height 1s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 .article h2 {
   font-size: 28px;
@@ -109,9 +111,28 @@
   cursor: pointer;
   transform: translate(-50%);
   background-color: white;
+  padding: 5px;
+}
+.article .expandButton:hover {
+  opacity: 0.6;
+}
+.article .closeButton {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 10px;
+  color: darkred;
+  cursor: pointer;
+}
+.article .closeButton:hover {
+  color: red;
 }
 .article-open {
-  height: 400px;
+  height: auto;
+  max-height: 400px;
+}
+.article-closed {
+  display: none;
 }
 html,
 body {
